@@ -136,17 +136,19 @@ events.on('order:submit', () => {
     });
 })
 
+events.on('contactsFormErrors:change', (errors: Partial<TOrder>) => {
+    const { email, phoneNumber } = errors;
+    orderContacts.valid = !email && !phoneNumber;
+    orderContacts.errors = Object.values({phoneNumber, email}).filter(i => !!i).join('; ');
+});
+
 events.on('contacts:submit', () => {
+    const total = appData.basket.total;
     modal.render({
-        content: success.render({
-            total: basket.total 
-
-        })
+        content: success.render()
     });
-
-    events.on('contactsFormErrors:change', (errors: Partial<TOrder>) => {
-        const { email, phoneNumber } = errors;
-        orderContacts.valid = !email && !phoneNumber;
-        orderContacts.errors = Object.values({phoneNumber, email}).filter(i => !!i).join('; ');
-    });
+    success.total = total;
+    appData.clearOrder();
+    appData.clearBasket();
 })
+

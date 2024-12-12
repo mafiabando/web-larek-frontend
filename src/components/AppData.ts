@@ -10,10 +10,10 @@ export class AppState {
         total: 0
     };
     order: TOrder = {
-        email: '',
-        phoneNumber: '',
+        payMethod: null,
         address: '',
-        payMethod: null
+        email: '',
+        phoneNumber: ''
     };
     formErrors: TformErrors = {};
 
@@ -77,11 +77,9 @@ export class AppState {
     }
 
     clearOrder() {
-        this.order = {
-            email: '',
-            phoneNumber: '',
-            address: '',
-            payMethod: null
-        };
+        this.order.payMethod = null,
+        this.order.address = '',
+        this.order.email = '',
+        this.order.phoneNumber = ''
     }
 }

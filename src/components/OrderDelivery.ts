@@ -5,7 +5,7 @@ import { ensureElement } from "../utils/utils";
 
 export class OrderDelivery extends Form<TOrderDeliveryDataForm> {
     protected _address: HTMLInputElement;
-    protected payMethod: TPayment;
+    protected _payMethod: TPayment;
     protected _buttonCard: HTMLButtonElement;
 	protected _buttonCash: HTMLButtonElement;
     protected _buttonPay: HTMLButtonElement;
@@ -36,7 +36,6 @@ export class OrderDelivery extends Form<TOrderDeliveryDataForm> {
     set address(value:string) {
         this._address.value = value;
     } 
-
 
     toggleButtonPay(value: HTMLElement) {
         this.toggleClass(this._buttonCard, 'button_alt-active', value === this._buttonCard);

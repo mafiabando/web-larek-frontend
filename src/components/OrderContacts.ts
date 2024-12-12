@@ -19,7 +19,7 @@ export  class OrderContacts extends Form<TOrderUserDataForm> {
         this._phone.addEventListener('input', () => this.checkFormValidity());
     }
 
-    set phone(value: string) {
+    set phoneNumber(value: string) {
         this._phone.value = value;
         this.checkFormValidity()
     }
